@@ -25,7 +25,7 @@ const OrdersScreen = props => {
 OrdersScreen.navigationOptions = navData => {
     return {
         headerTitle: 'My Orders',
-        headerLeft: (<HeaderButtons HeaderButtonComponent={HeaderButton}>
+        headerLeft: () => (<HeaderButtons HeaderButtonComponent={HeaderButton}>
             <Item
                 title="Menu"
                 iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}

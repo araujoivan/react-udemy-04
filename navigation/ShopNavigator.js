@@ -6,6 +6,9 @@ import { Ionicons } from '@expo/vector-icons';
 
 import ProductOverviewScreen from '../screens/shop/ProductsOverviewScreen';
 import ProductDetailScreen from '../screens/shop/ProductsDetailScreen';
+import UserProductScreen from '../screens/user/UserProductsScreen';
+import EditProductScreen from '../screens/user/EditProductScreen';
+
 // OrdersScreen is not part of the stack ... so lets put it  into draw
 import OrdersScreen from '../screens/shop/OrderScreen';
 import CartScreen from '../screens/shop/CartScreen';
@@ -61,10 +64,29 @@ const OrdersNavigator = createStackNavigator(
     }
 )
 
+const AdminNavigator = createStackNavigator(
+    {
+        UserProducts: UserProductScreen,
+        EditProduct: EditProductScreen
+    }, 
+    {
+        navigationOptions: {
+            drawerLabel: 'My Products',
+            drawerIcon: drawerConfig => 
+            <Ionicons name={ Platform.OS === 'android' ? 'md-create' : 'ios-create'}
+                size={23}
+                color={drawerConfig.tintColor}
+            />
+        },
+        defaultNavigationOptions: defaultNavOptions
+    }
+)
+
 const ShopDrawerNavigator = createDrawerNavigator(
     {
         ProductsDrawer: ProductsNavigator,
-        OrdersDrawer: OrdersNavigator
+        OrdersDrawer: OrdersNavigator,
+        Admin: AdminNavigator
     }, 
     {
         contentOptions: {
